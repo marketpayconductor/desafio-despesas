@@ -26,9 +26,8 @@ Se você for aprovado nesta etapa, será convidado para uma entrevista final com
   - O que vamos avaliar:
     ```
     * Seu código; 
-    * Desempenho;
     * Organização;
-    * Boas práticas será um diferencial.
+    * Boas práticas;
     ```
 
   - Dependências
