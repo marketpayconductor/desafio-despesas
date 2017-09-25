@@ -1,0 +1,11 @@
+{
+	"name": "Conductor - Desafio Despesas",
+	"version": "1.0.0",
+	"description": "Documentação da API do Desafio Despesas",
+	"title": "Documentação da API do fio Despesas",
+	"url" : "https://url",
+	"template": {
+		"withCompare": false,
+		"withGenerator": true
+	}
+}
