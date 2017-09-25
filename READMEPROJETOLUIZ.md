@@ -1,6 +1,6 @@
 # PROJETO LUIZ CARLOS FERREIRA
 
-### Um pouco sobre o que feito
+### Um pouco sobre o que foi feito
 O projeto foi criado utilizando da Tecnologia Rest, juntamenta com Spring-boot e maven, este projeto encontra-se organizado por pacotes de acordo com suas reponsabilidades, para que assim possa atender as exigências minimas do projeto.
 
 ### Como executar o projeto
