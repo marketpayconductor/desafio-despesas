@@ -1,47 +1,31 @@
-# desafio-despesas
+Desafio Conductor - Despesas - Alexsandro Guedes
+===================
 
-### Desafio Conductor de Seleção 
-Olá, queremos convidá-lo a participar de nosso desafio de seleção.  Pronto para participar? Seu trabalho será visto por nosso time e você receberá ao final um feedback sobre o que achamos do seu trabalho. Não é legal?
 
-### Sobre a oportunidade 
-A vaga é para Desenvolvedor Java, temos vagas com diversos níveis de senioridade e para cada um deles utilizaremos critérios específicos considerando esse aspecto, combinado? 
-Se você for aprovado nesta etapa, será convidado para uma entrevista final com nosso time técnico.
+Este projeto tem como objeto prover uma **API** para operações em uma conta, tais como: cadastro de movimentações,  consulta de saldo e etc.;   
 
-### Desafio Técnico
-  Desenvolver um sistema de gerenciamento de despesas, para manter controle entre gastos e receita:
-  - Pré-requisitos:
-    ```
-    * Desenvolver os recursos em API Rest;
-    * Se for persistir os dados em banco de dados, utilizar o MySql.
-    ```
+As tecnologias base do projeto são **Maven, Java 8, Spring Boot, Rest,  MySQL,  JUnit, Mockito(Para mockar as classes de teste) dentre outras.**
 
-  - O que esperamos como escopo mínimo:
-    ```
-    * Adicionar Despesa e Receita;
-    * Histórico de movimentações;
-    * Consultar saldo atual;
-    * Transferir crédito entre contas;
-    ```
-    
-  - O que vamos avaliar:
-    ```
-    * Seu código; 
-    * Organização;
-    * Boas práticas;
-    ```
+**OBS:** O encoding adotado pelo projeto é o UTF-8.
 
-  - Dependências
-    ```
-    * JDK 1.8+
-    * Maven 3+
-    * JUnit 4+
-    * Spring 4+ (Opcional)
-    ```
+----------
 
-### Instruções
-      1. Faça o fork do desafio e crie uma branch 'desafio_despesas_nome_candidato';
-      2. Desenvolva. Você terá 2 (dois) dias a partir da data do envio do desafio; 
-      3. Após concluir seu trabalho faça um push; 
-      4. Crie um arquivo de texto com a nomenclatura README.MD com a explicação de como devemos executar o 
-        projeto e com uma descrição do que foi feito; 
-      5. Solicite o Merge request para o repositório original e que a força esteja com você.
+Instalation
+-------------------
+Para instalar o projeto localmente siga o passos a seguir:
+
+>Criar a database no MySQL  com nome: **desafioDespesasAlexsandro**, com **user** root e **pass** root (as configurações do database estão no arquivo **application.properties**  no projeto).
+ 
+> Dentro da pasta do projeto execute o seguinte comando: **mvn clean spring-boot:run** (O Tomcat embarcado irá utilizar a porta 8090 configurada no arquivo application.properties. Mudar caso necessário.)
+> 
+> **Importante**: O *Maven* é dependência.
+
+#### <i class="icon-file"></i>Documents
+-------------
+
+> A documentação da **API Conta** está disponível no link [APIDoc Aplication ](http://localhost:8090/apidoc/index.html)
+
+
+
+----------
+Done!
