@@ -1,47 +1,85 @@
 # desafio-despesas
 
-### Desafio Conductor de Seleção 
-Olá, queremos convidá-lo a participar de nosso desafio de seleção.  Pronto para participar? Seu trabalho será visto por nosso time e você receberá ao final um feedback sobre o que achamos do seu trabalho. Não é legal?
+### Configuração e execução da aplicação 
+Para executar o projeto é necessário apenas executar o arquivo SpringBootRunApp.java, passando a argumento -Dspring.profiles.active=local.
 
-### Sobre a oportunidade 
-A vaga é para Desenvolvedor Java, temos vagas com diversos níveis de senioridade e para cada um deles utilizaremos critérios específicos considerando esse aspecto, combinado? 
-Se você for aprovado nesta etapa, será convidado para uma entrevista final com nosso time técnico.
+No caso da configuração do banco de dados e do servidor, isso pode ser realizado no arquivo application.yml.  
 
-### Desafio Técnico
-  Desenvolver um sistema de gerenciamento de despesas, para manter controle entre gastos e receita:
-  - Pré-requisitos:
+
+### Especificações
+  Este projeto foi feito usando as seguintes tecnologias:
+  - Java 8;
+  - Maven 3;
+  - Spring Framework 4;
+  - Spring Boot 1.5;
+  - HikariCP;
+  - Apache Commons;
+
+### URLs Rest
+  Este projeto possui as seguintes urls:
+  
+  - Conta:  
     ```
-    * Desenvolver os recursos em API Rest;
-    * Se for persistir os dados em banco de dados, utilizar o MySql.
+    * POST: http://localhost:8080/app/api/conta/    
+    * GET: http://localhost:8080/app/api/conta/{id}    
+    * GET: http://localhost:8080/app/api/conta/    
+    * PUT: http://localhost:8080/app/api/conta/{id}     
     ```
 
-  - O que esperamos como escopo mínimo:
+  - Despesa:  
     ```
-    * Adicionar Despesa e Receita;
-    * Histórico de movimentações;
-    * Consultar saldo atual;
-    * Transferir crédito entre contas;
+    * GET: http://localhost:8080/app/api/despesa/   
+    * POST: http://localhost:8080/app/api/despesa/   
+    * PUT: http://localhost:8080/app/api/despesa/{id}       
+    * PUT:  http://localhost:8080/app/api/despesa/pagar/{id}   
+    * PUT: http://localhost:8080/app/api/despesa/cancelar/{id}   
+    * GET: http://localhost:8080/app/api/despesa/{id}   
     ```
     
-  - O que vamos avaliar:
+  - Lançamento de Conta:  
     ```
-    * Seu código; 
-    * Organização;
-    * Boas práticas;
-    ```
-
-  - Dependências
-    ```
-    * JDK 1.8+
-    * Maven 3+
-    * JUnit 4+
-    * Spring 4+ (Opcional)
+    * GET: http://localhost:8080/app/api/lancamentoconta/       
+    * GET: http://localhost:8080/app/api/lancamentoconta/{id}       
     ```
 
-### Instruções
-      1. Faça o fork do desafio e crie uma branch 'desafio_despesas_nome_candidato';
-      2. Desenvolva. Você terá 2 (dois) dias a partir da data do envio do desafio; 
-      3. Após concluir seu trabalho faça um push; 
-      4. Crie um arquivo de texto com a nomenclatura README.MD com a explicação de como devemos executar o 
-        projeto e com uma descrição do que foi feito; 
-      5. Solicite o Merge request para o repositório original e que a força esteja com você.
+  - Movimentação entre Contas:  
+    ```
+    * GET: http://localhost:8080/app/api/movimentacaoconta/    
+    * GET: http://localhost:8080/app/api/movimentacaoconta/{id}    
+    * POST: http://localhost:8080/app/api/movimentacaoconta/    
+    ```
+  - Receita:  
+    ```
+    * GET: http://localhost:8080/app/api/receita/{id}    
+    * POST: http://localhost:8080/app/api/receita/    
+    * PUT: http://localhost:8080/app/api/receita/{id}    
+    * PUT: http://localhost:8080/app/api/receita/receber/{id}    
+    * PUT: http://localhost:8080/app/api/receita/cancelar/{id}    
+    * GET: http://localhost:8080/app/api/receita/    
+    ```
+
+  - Tipo de Despesa:  
+    ```
+    * GET: http://localhost:8080/app/api/tipodespesa/{id}    
+    * POST: http://localhost:8080/app/api/tipodespesa/    
+    * PUT: http://localhost:8080/app/api/tipodespesa/{id}    
+    * GET: http://localhost:8080/app/api/tipodespesa/    
+    ```
+
+  - Tipo de Receita:  
+    ```
+    * GET: http://localhost:8080/app/api/tiporeceita/{id}    
+    * POST: http://localhost:8080/app/api/tiporeceita/    
+    * GET: http://localhost:8080/app/api/tiporeceita/    
+    * PUT: http://localhost:8080/app/api/tiporeceita/{id}    
+    ```
+
+  - Usuário:  
+    ```
+    * GET: http://localhost:8080/app/api/usuario/    
+    * GET: http://localhost:8080/app/api/usuario/{id}    
+    * POST: http://localhost:8080/app/api/usuario/    
+    * PUT: http://localhost:8080/app/api/usuario/{id}    
+    ```
+
+
