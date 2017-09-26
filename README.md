@@ -1,47 +1,63 @@
-# desafio-despesas
+# desafio-despesas - Caio César Falconi
 
-### Desafio Conductor de Seleção 
-Olá, queremos convidá-lo a participar de nosso desafio de seleção.  Pronto para participar? Seu trabalho será visto por nosso time e você receberá ao final um feedback sobre o que achamos do seu trabalho. Não é legal?
+### Sobre o Projeto 
+	A API contendo os serviços deste projeto foi desenvolvida utilizando a arquitetura REST. Foram utilizados também o framework Spring boot, JUnit e para o gerenciamento de dependências o Maven.
 
-### Sobre a oportunidade 
-A vaga é para Desenvolvedor Java, temos vagas com diversos níveis de senioridade e para cada um deles utilizaremos critérios específicos considerando esse aspecto, combinado? 
-Se você for aprovado nesta etapa, será convidado para uma entrevista final com nosso time técnico.
-
-### Desafio Técnico
-  Desenvolver um sistema de gerenciamento de despesas, para manter controle entre gastos e receita:
-  - Pré-requisitos:
+### Execução do Projeto 
+	- Banco de Dados:
     ```
-    * Desenvolver os recursos em API Rest;
-    * Se for persistir os dados em banco de dados, utilizar o MySql.
+	É necessário criar o banco de dados "desafio_despesas";
+    As configurações do banco de dados (tais como url, username e password)  estão no arquivo "application.properties";
     ```
-
-  - O que esperamos como escopo mínimo:
+	
+	- Maven:
+	```
+	* Via IDE: É necessário executar o build com o parâmetro "clean install";
     ```
-    * Adicionar Despesa e Receita;
-    * Histórico de movimentações;
-    * Consultar saldo atual;
-    * Transferir crédito entre contas;
+	
+	- Disponibilizar API:
+	```
+	* Via IDE: É necessário executar como "Java Application" a classe DesafioApplication.java;
     ```
-    
-  - O que vamos avaliar:
-    ```
-    * Seu código; 
-    * Organização;
-    * Boas práticas;
+	
+	- Testar Recursos API:
+	```
+	Para testar os serviços da API sugiro o Postman (plugin do Google Chrome), o SoapUI ou alguma outra ferramenta para consumo e testes de serviços REST;
     ```
 
-  - Dependências
-    ```
-    * JDK 1.8+
-    * Maven 3+
-    * JUnit 4+
-    * Spring 4+ (Opcional)
-    ```
-
-### Instruções
-      1. Faça o fork do desafio e crie uma branch 'desafio_despesas_nome_candidato';
-      2. Desenvolva. Você terá 2 (dois) dias a partir da data do envio do desafio; 
-      3. Após concluir seu trabalho faça um push; 
-      4. Crie um arquivo de texto com a nomenclatura README.MD com a explicação de como devemos executar o 
-        projeto e com uma descrição do que foi feito; 
-      5. Solicite o Merge request para o repositório original e que a força esteja com você.
+### API
+	- Conta
+	* Criar Conta:
+		Método: 		POST 
+		URL:			http://localhost:8080/conta/
+		Exemplo JSon:	{"numeroConta":"1234567", "descricao": "Conta Teste", "saldo":1000}
+		
+    * Listar Contas:	
+		Método: GET 
+		URL: 	http://localhost:8080/conta/
+		
+	* Consultar Conta:
+		Método: GET 
+		URL: 	http://localhost:8080/conta/{idConta}
+	
+	* Apagar Conta:
+		Método: DELETE
+		URL: 	http://localhost:8080/conta/
+		
+	- Lançamento (0-Receita / 1-Despesa)
+	* Adicionar Lançamento:
+		Método: 		POST 
+		URL:			http://localhost:8080/conta/{idConta}/lancamento/
+		Exemplo JSon:	{"descricao":"Salario", "valor": 3000, "data":"2017-05-05", "tipoLancamento": 0 }
+		
+	* Trasferir:
+	Método: 		POST 
+	URL:			http://localhost:8080/conta/{idContaOrigem}/transferir/{idContaDestino}/
+	Exemplo JSon:	{"descricao":"Pagamento Dívida", "valor": 200}
+	
+	* Histórico Movimentações:
+		Método: GET 
+		URL: 	http://localhost:8080/conta/{idConta}/lancamento/	
+		
+		
+		
