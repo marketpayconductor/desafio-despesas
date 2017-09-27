@@ -1,0 +1,127 @@
+{
+	"id": "5661e868-9d74-cb3d-68eb-5f73ea33411a",
+	"name": "despesas-elton-leite",
+	"description": "",
+	"order": [
+		"7efaa436-b5d1-3b46-86e2-fdce65a9294d",
+		"a8a80567-ff7e-2d15-b8ab-bb20aaeca811",
+		"2874d30e-5ea9-88d5-3917-8ee774539048",
+		"94f20397-984e-01f4-8db8-31153c5e3798"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1506517628746,
+	"owner": "513916",
+	"public": false,
+	"requests": [
+		{
+			"id": "2874d30e-5ea9-88d5-3917-8ee774539048",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8080/account/180625/transfer",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506523877768,
+			"name": "localhost:8080/account/123460/transfer",
+			"description": "",
+			"collectionId": "5661e868-9d74-cb3d-68eb-5f73ea33411a",
+			"responses": [],
+			"rawModeData": "{\n\"destinationAccountNumber\":180626,\n\"value\":5.3\n}"
+		},
+		{
+			"id": "7efaa436-b5d1-3b46-86e2-fdce65a9294d",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8080/account/180625",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PATCH",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506523834816,
+			"name": "localhost:8080/account/123460",
+			"description": "",
+			"collectionId": "5661e868-9d74-cb3d-68eb-5f73ea33411a",
+			"responses": [],
+			"rawModeData": "{\n\"type\":\"DECREASE\",\n\"value\":1.0\n}"
+		},
+		{
+			"id": "94f20397-984e-01f4-8db8-31153c5e3798",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/account/180625/transactionHistory",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506523818215,
+			"name": "http://localhost:8080/account/123460/transactionHistory",
+			"description": "",
+			"collectionId": "5661e868-9d74-cb3d-68eb-5f73ea33411a",
+			"responses": []
+		},
+		{
+			"id": "a8a80567-ff7e-2d15-b8ab-bb20aaeca811",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8080/account",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506523813919,
+			"name": "localhost:8080/account",
+			"description": "",
+			"collectionId": "5661e868-9d74-cb3d-68eb-5f73ea33411a",
+			"responses": [],
+			"rawModeData": "{\n\"accountNumber\":180626,\n\"balance\":1000.500\n}"
+		}
+	]
+}

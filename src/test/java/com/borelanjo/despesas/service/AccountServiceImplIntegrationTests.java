@@ -42,16 +42,16 @@ public class AccountServiceImplIntegrationTests {
 	@Test
 	public void addTransaction() {
 		
-		Integer accountNumber = 123457;
+		Integer accountNumber = 123460;
 
-		TransactionHistory transactionHistory = this.serviceImpl.addTransaction(accountNumber, TransactionType.DECREASE, 5.0);
-		assertThat(transactionHistory.getDescription()).isEqualTo("Despesa: R$ 5.0");
+		TransactionHistory transactionHistory = this.serviceImpl.addTransaction(accountNumber, TransactionType.INCREASE, 5.0);
+		assertThat(transactionHistory.getDescription()).isEqualTo("Receita: R$ 5.0");
 	}
 	
 	@Test
 	public void transfer() {
-		Integer sourceAccountNumber = 456798;
-		Integer destinationAccountNumber = 456799;
+		Integer sourceAccountNumber = 123460;
+		Integer destinationAccountNumber = 456790;
 
 		TransactionHistory transactionHistory = this.serviceImpl.transfer(sourceAccountNumber, destinationAccountNumber, 5.0);
 		assertThat(transactionHistory.getDescription()).isEqualTo("Despesa: Transferido R$ 5.0 para a conta 456799");
