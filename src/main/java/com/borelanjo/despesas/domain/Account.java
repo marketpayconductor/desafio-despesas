@@ -18,8 +18,8 @@ public class Account implements Serializable {
 	@GeneratedValue(generator = "account_generator")
 	private Long id;
 
-	@Column(nullable = false)
-	private Long accountNumber;
+	@Column(nullable = false, unique = true)
+	private Integer accountNumber;
 
 	@Column(nullable = false)
 	private Double balance;
@@ -27,7 +27,7 @@ public class Account implements Serializable {
 	protected Account() {
 	}
 
-	public Account(Long accountNumber, Double balance) {
+	public Account(Integer accountNumber, Double balance) {
 		super();
 		this.accountNumber = accountNumber;
 		this.balance = balance;
@@ -41,11 +41,11 @@ public class Account implements Serializable {
 		this.id = id;
 	}
 
-	public Long getAccountNumber() {
+	public Integer getAccountNumber() {
 		return accountNumber;
 	}
 
-	public void setAccountNumber(Long accountNumber) {
+	public void setAccountNumber(Integer accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 
