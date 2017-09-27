@@ -2,6 +2,7 @@ package com.borelanjo.despesas.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -14,14 +15,13 @@ import com.borelanjo.despesas.enumeration.TransactionType;
 @Transactional
 public class AccountServiceImpl implements AccountService {
 
-	private final AccountRepository accountRepository;
+	@Autowired
+	private AccountRepository accountRepository;
 
-	private final TransactionHistoryRepository transactionHistoryRepository;
+	@Autowired
+	private TransactionHistoryRepository transactionHistoryRepository;
 
-	public AccountServiceImpl(AccountRepository accountRepository, TransactionHistoryRepository transactionHistoryRepository) {
-		this.accountRepository = accountRepository;
-		this.transactionHistoryRepository = transactionHistoryRepository;
-	}
+
 
 	public Account createAccount(Integer accountNumber, Double balance) {
 		Account account = new Account(accountNumber, balance);
@@ -48,7 +48,9 @@ public class AccountServiceImpl implements AccountService {
 
 	public TransactionHistory transfer(Integer sourceAccountNumber, Integer destinationAccountNumber, Double value) {
 		Account sourceAccount = this.accountRepository.findOneByAccountNumber(sourceAccountNumber);
+		Assert.notNull(sourceAccount, "Conta de origem não pode ser nula");
 		Account destinationAccount = this.accountRepository.findOneByAccountNumber(destinationAccountNumber);
+		Assert.notNull(sourceAccount, "Conta de destino não pode ser nula");
 		String sourceDescription = TransactionType.DECREASE.type()+ ": Transferido R$ "+value+" para a conta "+destinationAccountNumber;
 		String destinationDescription = TransactionType.INCREASE.type()+ ": Recebido R$ "+value+" da conta "+sourceAccountNumber;
 		

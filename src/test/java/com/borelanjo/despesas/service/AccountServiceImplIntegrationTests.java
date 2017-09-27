@@ -27,7 +27,7 @@ public class AccountServiceImplIntegrationTests {
 	TransactionHistoryRepository transactionHistoryRepository;
 	
 	@Autowired
-	AccountServiceImpl serviceImpl = new AccountServiceImpl(accountRepository, transactionHistoryRepository);
+	AccountServiceImpl serviceImpl;
 	
 	@Test
 	public void createAccount() {
