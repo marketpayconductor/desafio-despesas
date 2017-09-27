@@ -1,11 +1,14 @@
 package com.borelanjo.despesas.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -23,6 +26,12 @@ public class Account implements Serializable {
 
 	@Column(nullable = false)
 	private Double balance;
+
+	@Column(nullable = true)
+	private Date created;
+
+	@Column(nullable = true)
+	private Date updated;
 
 	protected Account() {
 	}
@@ -56,12 +65,28 @@ public class Account implements Serializable {
 	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
-	
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public Date getUpdated() {
+		return updated;
+	}
+
+	@PrePersist
+	protected void onCreate() {
+		created = new Date();
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		updated = new Date();
+	}
+
 	@Override
 	public String toString() {
 		return getAccountNumber() + "," + getBalance();
 	}
-	
-	
 
 }

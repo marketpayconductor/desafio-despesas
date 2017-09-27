@@ -10,6 +10,8 @@ public interface AccountService {
 	
 	Account createAccount(Integer accountNumber, Double balance);
 	
+	Account getAccount(Integer accountNumber);
+	
 	TransactionHistory addTransaction(Integer accountNumber, TransactionType type, Double value);
 	
 	Double checkBalance(Integer accountNumber);

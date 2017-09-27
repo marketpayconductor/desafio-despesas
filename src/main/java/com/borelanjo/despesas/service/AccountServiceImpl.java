@@ -28,11 +28,16 @@ public class AccountServiceImpl implements AccountService {
 		Account result = accountRepository.save(account);
 		return result;
 	}
+	
+	public Account getAccount(Integer accountNumber) {
+		Account result = accountRepository.findOneByAccountNumber(accountNumber);
+		return result;
+	}
 
 	public TransactionHistory addTransaction(Integer accountNumber, TransactionType transactionType, Double value) {
 		Account account = this.accountRepository.findOneByAccountNumber(accountNumber);
 		Assert.notNull(account, "Conta não deve ser nula");
-		String description = transactionType.type()+ ": R$ "+value;
+		String description = transactionType.type()+ ": R$ "+value+". Novo Saldo: R$"+account.getBalance();
 		value = fixValue(transactionType, value);
 		account.setBalance(account.getBalance()+ value);
 		this.accountRepository.save(account);
@@ -51,11 +56,14 @@ public class AccountServiceImpl implements AccountService {
 		Assert.notNull(sourceAccount, "Conta de origem não pode ser nula");
 		Account destinationAccount = this.accountRepository.findOneByAccountNumber(destinationAccountNumber);
 		Assert.notNull(sourceAccount, "Conta de destino não pode ser nula");
-		String sourceDescription = TransactionType.DECREASE.type()+ ": Transferido R$ "+value+" para a conta "+destinationAccountNumber;
+		String sourceDescription = null;
 		String destinationDescription = TransactionType.INCREASE.type()+ ": Recebido R$ "+value+" da conta "+sourceAccountNumber;
 		
 		sourceAccount.setBalance(sourceAccount.getBalance()-value);
 		destinationAccount.setBalance(destinationAccount.getBalance()+value);
+		
+		sourceDescription = TransactionType.DECREASE.type()+ ": Transferido R$ "+value+" para a conta "+destinationAccountNumber+". Novo Saldo: R$"+sourceAccount.getBalance();
+		destinationDescription = TransactionType.INCREASE.type()+ ": Recebido R$ "+value+" da conta "+sourceAccountNumber+". Novo Saldo: R$"+destinationAccount.getBalance();
 		
 		TransactionHistory sourceTransactionHistory = new TransactionHistory(sourceAccount, TransactionType.DECREASE.type(), sourceDescription, value);
 		TransactionHistory destinationTransactionHistory = new TransactionHistory(destinationAccount, TransactionType.INCREASE.type(), destinationDescription, value);

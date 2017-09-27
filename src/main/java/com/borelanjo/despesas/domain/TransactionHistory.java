@@ -1,12 +1,14 @@
 package com.borelanjo.despesas.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -30,6 +32,9 @@ public class TransactionHistory implements Serializable {
 
 	@Column(nullable = false)
 	private Double value;
+
+	@Column(nullable = false)
+	private Date created;
 
 	protected TransactionHistory() {
 	}
@@ -79,6 +84,15 @@ public class TransactionHistory implements Serializable {
 
 	public void setValue(Double value) {
 		this.value = value;
+	}
+
+	public Date getCreated() {
+		return created;
+	}
+
+	@PrePersist
+	protected void onCreate() {
+		created = new Date();
 	}
 
 }

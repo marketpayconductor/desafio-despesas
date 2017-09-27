@@ -32,6 +32,13 @@ public class AccountController {
 		return accountService.createAccount(account.getAccountNumber(), account.getBalance());
 	}
 
+	@GetMapping("/account/{accountNumber}")
+	@ResponseBody
+	@Transactional(readOnly = true)
+	public Account getAccount(@PathVariable("accountNumber") Integer accountNumber) {
+		return accountService.getAccount(accountNumber);
+	}
+
 	@GetMapping("/account/{accountNumber}/transactionHistory")
 	@ResponseBody
 	@Transactional(readOnly = true)
