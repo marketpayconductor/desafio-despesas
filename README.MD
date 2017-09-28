@@ -23,7 +23,7 @@ Aplicação rest, usando Maven, JDK 1.8, JPA e Spring;
 	Método: DELTE
 	URL: localhost:8080/api/usuario/{cpf}
 
-##REMOVER LISTAR USUARIOS
+##LISTAR USUARIOS
 
 	Método: GET
 	URL: localhost:8080/api/usuario
