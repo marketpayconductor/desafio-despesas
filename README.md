@@ -1,47 +1,33 @@
-# desafio-despesas
+### Como executar
 
-### Desafio Conductor de Seleção 
-Olá, queremos convidá-lo a participar de nosso desafio de seleção.  Pronto para participar? Seu trabalho será visto por nosso time e você receberá ao final um feedback sobre o que achamos do seu trabalho. Não é legal?
+O arquivo "application.properties" contém as configurações da base de dados, altere-o de acordo com a base de dados que você irá utilizar.
+Executando na IDE: Abra a classe DesafioDespesasApplication.java, depois inicialize a aplicação usando o Spring-boot.
+utilize um Browser qualquer para executar os métodos. Para facilitar o consumo dos métodos, utilize alguma ferramenta que faz uso de um client rest, como o Postman.
+Na classe ContaController.java existem alguns exemplos de entradas e saídas dos métodos existentes.
 
-### Sobre a oportunidade 
-A vaga é para Desenvolvedor Java, temos vagas com diversos níveis de senioridade e para cada um deles utilizaremos critérios específicos considerando esse aspecto, combinado? 
-Se você for aprovado nesta etapa, será convidado para uma entrevista final com nosso time técnico.
+### Tecnologias utilizadas
+JDK 1.8
+Maven
+Junit
+Spring boot
+JPA
+Hibernate
+Tomcat
+MySql
+Api Rest
 
-### Desafio Técnico
-  Desenvolver um sistema de gerenciamento de despesas, para manter controle entre gastos e receita:
-  - Pré-requisitos:
-    ```
-    * Desenvolver os recursos em API Rest;
-    * Se for persistir os dados em banco de dados, utilizar o MySql.
-    ```
+### O que foi feito
 
-  - O que esperamos como escopo mínimo:
-    ```
-    * Adicionar Despesa e Receita;
-    * Histórico de movimentações;
-    * Consultar saldo atual;
-    * Transferir crédito entre contas;
-    ```
-    
-  - O que vamos avaliar:
-    ```
-    * Seu código; 
-    * Organização;
-    * Boas práticas;
-    ```
+Métodos criados:
+1 cadastrarConta
+2 cancelarConta
+3 adicionarDespesa
+4 adicionarReceita
+5 transferirCredito
+6 consultarSaldoAtual
+7 historicoMovimentacao
 
-  - Dependências
-    ```
-    * JDK 1.8+
-    * Maven 3+
-    * JUnit 4+
-    * Spring 4+ (Opcional)
-    ```
-
-### Instruções
-      1. Faça o fork do desafio e crie uma branch 'desafio_despesas_nome_candidato';
-      2. Desenvolva. Você terá 2 (dois) dias a partir da data do envio do desafio; 
-      3. Após concluir seu trabalho faça um push; 
-      4. Crie um arquivo de texto com a nomenclatura README.MD com a explicação de como devemos executar o 
-        projeto e com uma descrição do que foi feito; 
-      5. Solicite o Merge request para o repositório original e que a força esteja com você.
+A descrição de cada método está contido em sua própria documentação.
+Foi realizado testes para cada método.
+Foi realizado validações dos campos de entrada de cada método.
+As respostas dos métodos seguem um padrão com o código e a mensagem;

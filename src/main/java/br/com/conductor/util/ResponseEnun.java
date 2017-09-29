@@ -7,6 +7,7 @@ public enum ResponseEnun {
 	DESPESA("02", "Despesa"),
 	RECEITA("03", "Receita"),
 	TRANSFERENCIA("04", "Transferência"),
+	INFORMAR_CAMPO("95", "Favor informar todos os campos"),
 	CONTA_DUPLICADA("96", "A conta já existe"),
 	CONTA_NAO_EXISTE("97","Número de Conta inexistente"),
 	SEM_LANCAMENTO("98", "Sem Lancamentos para esta conta"),
