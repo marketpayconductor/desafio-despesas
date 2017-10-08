@@ -22,4 +22,9 @@ public class UsuarioAuth extends User {
         return usuario;
     }
 
+    @Override
+    public String toString() {
+        return getUsername();
+    }
+
 }

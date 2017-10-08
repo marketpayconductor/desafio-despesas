@@ -36,7 +36,7 @@ public class ApplicationUserDetailsService implements UserDetailsService {
     }
 
     public Usuario obterUsuarioLogado() {
-        String login = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String login = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
         return obterUsuario(login);
     }
 
