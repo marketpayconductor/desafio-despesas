@@ -22,7 +22,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.jarddel.desafio.api.application.service.exception.ContaInexistenteException;
 import com.jarddel.desafio.api.application.service.exception.InformacaoNaoEncontradaException;
 import com.jarddel.desafio.api.application.service.exception.UsuarioJaCadastradoException;
+import com.jarddel.desafio.api.domain.exception.ContaDestinoInativaException;
+import com.jarddel.desafio.api.domain.exception.ContaOrigemInativaException;
 import com.jarddel.desafio.api.domain.exception.SaldoInsuficienteException;
+import com.jarddel.desafio.api.domain.exception.UsuarioInativoException;
 
 @ControllerAdvice
 public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler {
@@ -44,6 +47,23 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
     @ExceptionHandler({ ContaInexistenteException.class })
     public ResponseEntity<Object> handleContaInexistenteException(ContaInexistenteException ex, WebRequest request) {
         return handleException(ex, HttpStatus.BAD_REQUEST, request, "recurso.conta.inexistente");
+    }
+
+    @ExceptionHandler({ UsuarioInativoException.class })
+    public ResponseEntity<Object> handleUsuarioInativoException(UsuarioInativoException ex, WebRequest request) {
+        return handleException(ex, HttpStatus.BAD_REQUEST, request, "recurso.usuario.inativo");
+    }
+
+    @ExceptionHandler({ ContaOrigemInativaException.class })
+    public ResponseEntity<Object> handleContaOrigemInativaException(ContaOrigemInativaException ex,
+            WebRequest request) {
+        return handleException(ex, HttpStatus.BAD_REQUEST, request, "recurso.lancamento.conta-origem-inativa");
+    }
+
+    @ExceptionHandler({ ContaDestinoInativaException.class })
+    public ResponseEntity<Object> handleContaDestinoInativaException(ContaDestinoInativaException ex,
+            WebRequest request) {
+        return handleException(ex, HttpStatus.BAD_REQUEST, request, "recurso.lancamento.conta-destino-inativa");
     }
 
     @Override
