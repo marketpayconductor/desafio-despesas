@@ -1,0 +1,7 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="ehcache.xsd">
+    <cache name="meuHistorico" maxEntriesLocalHeap="200" timeToLiveSeconds="120"></cache>
+    <cache name="historico" maxEntriesLocalHeap="200" timeToLiveSeconds="120"></cache>
+</ehcache>
+
+
