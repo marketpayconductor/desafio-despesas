@@ -38,5 +38,4 @@ $ mvn spring-boot:run
 
 ### Possíveis Melhorias
 - [ ] Cobertura de testes (JUnit)
-- [ ] Paginação (Pageable)
 - [ ] ModelMapper
