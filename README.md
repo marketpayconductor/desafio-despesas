@@ -35,7 +35,7 @@ Se você for aprovado nesta etapa, será convidado para uma entrevista final com
     * JDK 1.8+
     * Maven 3+
     * JUnit 4+
-    * Spring 4+ (Opcional)
+    * Spring 4+
     ```
 
 ### Instruções
