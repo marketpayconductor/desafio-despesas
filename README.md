@@ -1,47 +1,42 @@
 # desafio-despesas
 
-### Desafio Conductor de Seleção 
-Olá, queremos convidá-lo a participar de nosso desafio de seleção.  Pronto para participar? Seu trabalho será visto por nosso time e você receberá ao final um feedback sobre o que achamos do seu trabalho. Não é legal?
+### Utilização
 
-### Sobre a oportunidade 
-A vaga é para Desenvolvedor Java, temos vagas com diversos níveis de senioridade e para cada um deles utilizaremos critérios específicos considerando esse aspecto, combinado? 
-Se você for aprovado nesta etapa, será convidado para uma entrevista final com nosso time técnico.
+```
+$ {mysql_path}\mysql start
+```
 
-### Desafio Técnico
-  Desenvolver um sistema de gerenciamento de despesas, para manter controle entre gastos e receita:
-  - Pré-requisitos:
-    ```
-    * Desenvolver os recursos em API Rest;
-    * Se for persistir os dados em banco de dados, utilizar o MySql.
-    ```
+```
+$ mvn spring-boot:run
+```
 
-  - O que esperamos como escopo mínimo:
-    ```
-    * Adicionar Despesa e Receita;
-    * Histórico de movimentações;
-    * Consultar saldo atual;
-    * Transferir crédito entre contas;
-    ```
-    
-  - O que vamos avaliar:
-    ```
-    * Seu código; 
-    * Organização;
-    * Boas práticas;
-    ```
+### Features adicionadas
+- OAuth2 com JWT (via profile)
+- BasicAuth (via profile)
+- ApiDoc (swagger2)
+- Migrations (FlyWay)
+- Mecanismo de cache (EhCache)
+- Pool de conexões (Hikari)
 
-  - Dependências
-    ```
-    * JDK 1.8+
-    * Maven 3+
-    * JUnit 4+
-    * Spring 4+ (Opcional)
-    ```
+### Dependências
+- JDK 1.8+
+- Maven 3+
+- Spring 4+
+- MySQL 5.7+
 
-### Instruções
-      1. Faça o fork do desafio e crie uma branch 'desafio_despesas_nome_candidato';
-      2. Desenvolva. Você terá 2 (dois) dias a partir da data do envio do desafio; 
-      3. Após concluir seu trabalho faça um push; 
-      4. Crie um arquivo de texto com a nomenclatura README.MD com a explicação de como devemos executar o 
-        projeto e com uma descrição do que foi feito; 
-      5. Solicite o Merge request para o repositório original e que a força esteja com você.
+### Escopo
+
+#### Modelo
+![modelo](https://i.imgur.com/JoDnCUo.jpg)
+
+#### Modelo Entidade Relacionamento (MER)
+![MER](https://i.imgur.com/rK6wKcK.jpg)
+
+#### Rescuros
+![Recursos](https://i.imgur.com/OYYy7QP.jpg)
+
+
+### Possíveis Melhorias
+- [ ] Cobertura de testes (JUnit)
+- [ ] Paginação (Pageable)
+- [ ] ModelMapper
