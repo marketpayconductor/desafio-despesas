@@ -3,5 +3,3 @@
     <cache name="meuHistorico" maxEntriesLocalHeap="200" timeToLiveSeconds="120"></cache>
     <cache name="historico" maxEntriesLocalHeap="200" timeToLiveSeconds="120"></cache>
 </ehcache>
-
-

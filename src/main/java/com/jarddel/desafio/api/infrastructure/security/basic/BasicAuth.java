@@ -40,10 +40,10 @@ public class BasicAuth extends WebSecurityConfigurerAdapter {
             .and()
                 .csrf().disable();
     }
-    
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
 }

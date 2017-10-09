@@ -70,7 +70,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
             .tokenEnhancer(tokenEnhancerChain)
             .reuseRefreshTokens(false)
             .authenticationManager(authManager);
-        
+
     }
 
     public static Boolean checarTokenPath(HttpServletRequest request) {
