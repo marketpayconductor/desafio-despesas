@@ -27,13 +27,13 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') and #oauth2.hasScope('read')")
     public Page<Usuario> listar(Pageable pageable) {
         return usuarioService.listarTodos(pageable);
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') and #oauth2.hasScope('read')")
     public Usuario buscar(@PathVariable Long id) {
         return usuarioService.buscar(id);
     }
@@ -45,25 +45,28 @@ public class UsuarioController {
     }
 
     @PutMapping("/")
+    @PreAuthorize("#oauth2.hasScope('write')")
     public ResponseEntity<Usuario> atualizarMe(@Valid @RequestBody Usuario usuario) {
         Usuario usuarioSalvo = usuarioService.atualizarMe(usuario);
         return ResponseEntity.ok(usuarioSalvo);
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') and #oauth2.hasScope('write')")
     public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @Valid @RequestBody Usuario usuario) {
         Usuario usuarioSalvo = usuarioService.atualizar(id, usuario);
         return ResponseEntity.ok(usuarioSalvo);
     }
 
     @PutMapping("/inativar")
+    @PreAuthorize("#oauth2.hasScope('write')")
     public ResponseEntity<Usuario> inativarMe() {
         Usuario usuarioSalvo = usuarioService.atualizarPropriedadeAtivo(false);
         return ResponseEntity.ok(usuarioSalvo);
     }
 
     @PutMapping("/ativar")
+    @PreAuthorize("#oauth2.hasScope('write')")
     public ResponseEntity<Usuario> ativarMe() {
         Usuario usuarioSalvo = usuarioService.atualizarPropriedadeAtivo(true);
         return ResponseEntity.ok(usuarioSalvo);

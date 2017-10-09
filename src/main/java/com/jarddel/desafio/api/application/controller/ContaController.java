@@ -29,42 +29,45 @@ public class ContaController {
     private ContaService contaService;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') and #oauth2.hasScope('read')")
     public Page<Conta> listar(Pageable pageable) {
         return contaService.listarTodos(pageable);
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') and #oauth2.hasScope('read')")
     public Conta buscar(@PathVariable Long id) {
         return contaService.buscar(id);
     }
 
     @GetMapping("/{id}/saldo")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') and #oauth2.hasScope('read')")
     public BigDecimal saldo(@PathVariable Long id) {
         return contaService.obterSaldo(id);
     }
 
     @GetMapping("/saldo")
+    @PreAuthorize("#oauth2.hasScope('read')")
     public BigDecimal saldo() {
         return contaService.obterMeuSaldo();
     }
 
     @PostMapping
+    @PreAuthorize("#oauth2.hasScope('write')")
     public ResponseEntity<Conta> cadastrarMe(@Valid @RequestBody Conta conta) {
         Conta contaSalva = contaService.cadastrarMe(conta);
         return ResponseEntity.status(HttpStatus.CREATED).body(contaSalva);
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') and #oauth2.hasScope('write')")
     public ResponseEntity<Conta> atualizar(@PathVariable Long id, @Valid @RequestBody Conta conta) {
         Conta contaSalva = contaService.atualizar(id, conta);
         return ResponseEntity.ok(contaSalva);
     }
 
     @PutMapping("/")
+    @PreAuthorize("#oauth2.hasScope('write')")
     public ResponseEntity<Conta> atualizarMe(@Valid @RequestBody Conta conta) {
         Conta contaSalva = contaService.atualizarMe(conta);
         return ResponseEntity.ok(contaSalva);

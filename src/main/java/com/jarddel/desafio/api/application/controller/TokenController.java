@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -21,6 +22,7 @@ public class TokenController {
 
     @DeleteMapping("/revogar")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("#oauth2.hasScope('read')")
     public void revoke(HttpServletRequest request, HttpServletResponse response) {
         response.addCookie(cookieFactory.criarRefreshToken(null, request));
     }

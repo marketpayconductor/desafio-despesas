@@ -30,29 +30,33 @@ public class LancamentoController {
     private LancamentoService lancamentoService;
 
     @GetMapping
+    @PreAuthorize("#oauth2.hasScope('read')")
     public Page<Lancamento> meuHistorico(Pageable pageable) {
         return lancamentoService.meuHistorico(pageable);
     }
 
     @GetMapping("/{idConta}/conta")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') and #oauth2.hasScope('read')")
     public Page<Lancamento> historico(@PathVariable Long idConta, Pageable pageable) {
         return lancamentoService.historico(idConta, pageable);
     }
 
     @PostMapping("/creditar")
+    @PreAuthorize("#oauth2.hasScope('write')")
     public ResponseEntity<Receita> creditar(@Valid @RequestBody LancamentoDTO lancamento) {
         Receita receita = lancamentoService.creditar(lancamento);
         return ResponseEntity.status(HttpStatus.CREATED).body(receita);
     }
 
     @PostMapping("/debitar")
+    @PreAuthorize("#oauth2.hasScope('write')")
     public ResponseEntity<Despesa> debitar(@Valid @RequestBody LancamentoDTO lancamento) {
         Despesa despesa = lancamentoService.debitar(lancamento);
         return ResponseEntity.status(HttpStatus.CREATED).body(despesa);
     }
 
     @PostMapping("/transferir")
+    @PreAuthorize("#oauth2.hasScope('write')")
     public ResponseEntity<Transferencia> transferir(@Valid @RequestBody LancamentoDTO lancamento) {
         Transferencia transferencia = lancamentoService.transferir(lancamento);
         return ResponseEntity.status(HttpStatus.CREATED).body(transferencia);
