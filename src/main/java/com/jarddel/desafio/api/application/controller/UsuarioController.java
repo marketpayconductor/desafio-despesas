@@ -1,10 +1,10 @@
 package com.jarddel.desafio.api.application.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -28,8 +28,8 @@ public class UsuarioController {
 
     @GetMapping
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public List<Usuario> listar() {
-        return usuarioService.listarTodos();
+    public Page<Usuario> listar(Pageable pageable) {
+        return usuarioService.listarTodos(pageable);
     }
 
     @GetMapping("/{id}")

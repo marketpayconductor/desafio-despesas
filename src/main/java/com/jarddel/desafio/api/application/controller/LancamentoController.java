@@ -1,10 +1,10 @@
 package com.jarddel.desafio.api.application.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,14 +30,14 @@ public class LancamentoController {
     private LancamentoService lancamentoService;
 
     @GetMapping
-    public List<Lancamento> meuHistorico() {
-        return lancamentoService.meuHistorico();
+    public Page<Lancamento> meuHistorico(Pageable pageable) {
+        return lancamentoService.meuHistorico(pageable);
     }
 
     @GetMapping("/{idConta}/conta")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public List<Lancamento> historico(@PathVariable Long idConta) {
-        return lancamentoService.historico(idConta);
+    public Page<Lancamento> historico(@PathVariable Long idConta, Pageable pageable) {
+        return lancamentoService.historico(idConta, pageable);
     }
 
     @PostMapping("/creditar")

@@ -1,9 +1,9 @@
 package com.jarddel.desafio.api.application.service;
 
-import java.util.List;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +28,8 @@ public abstract class BaseService<T> implements BaseServiceInterface<T> {
         return entidade;
     }
 
-    public List<T> listarTodos() {
-        return getRepository().findAll();
+    public Page<T> listarTodos(Pageable pageable) {
+        return getRepository().findAll(pageable);
     }
 
     @Override

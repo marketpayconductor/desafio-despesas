@@ -1,9 +1,9 @@
 package com.jarddel.desafio.api.application.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,15 +33,15 @@ public class LancamentoService extends BaseService<Lancamento> implements Lancam
     }
 
     @Cacheable("meuHistorico")
-    public List<Lancamento> meuHistorico() {
+    public Page<Lancamento> meuHistorico(Pageable pageable) {
         Conta conta = contaService.buscar(obterMinhaConta().getId());
-        List<Lancamento> lancamentos = lancamentoRepository.buscarHistorico(conta);
+        Page<Lancamento> lancamentos = lancamentoRepository.buscarHistorico(conta, pageable);
         return lancamentos;
     }
 
     @Cacheable("historico")
-    public List<Lancamento> historico(Long id) {
-        List<Lancamento> lancamentos = lancamentoRepository.buscarHistorico(contaService.buscar(id));
+    public Page<Lancamento> historico(Long id, Pageable pageable) {
+        Page<Lancamento> lancamentos = lancamentoRepository.buscarHistorico(contaService.buscar(id), pageable);
         return lancamentos;
     }
 

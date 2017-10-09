@@ -1,12 +1,13 @@
 package com.jarddel.desafio.api.domain.service;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface BaseServiceInterface<T> {
 
     public T buscar(Long id);
 
-    public List<T> listarTodos();
+    public Page<T> listarTodos(Pageable pageable);
 
     public T salvar(T entidade);
 
