@@ -47,7 +47,7 @@ public class Conta {
     @JoinColumn(name = "usuario")
     private Usuario usuario;
 
-    @Column(name = "dataCriacao")
+    @Column(name = "data_criacao")
     private LocalDate dataCriacao;
 
     @NotNull
