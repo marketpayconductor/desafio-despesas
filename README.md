@@ -1,5 +1,4 @@
-# desafio-despesas
-
+# desafio-despesas [![Build Status](https://travis-ci.org/jarddel/desafio-despesas.svg?branch=master)](https://travis-ci.org/jarddel/desafio-despesas)
 ### Utilização
 
 ```
