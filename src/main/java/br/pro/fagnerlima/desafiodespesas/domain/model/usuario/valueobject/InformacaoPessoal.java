@@ -1,11 +1,31 @@
 package br.pro.fagnerlima.desafiodespesas.domain.model.usuario.valueobject;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class InformacaoPessoal {
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CPF;
+
+@Embeddable
+public class InformacaoPessoal implements Serializable {
+
+    private static final long serialVersionUID = -1448302915708620696L;
+
+    @NotEmpty
+    @Size(min = 6, max = 100)
     private String nome;
+
+    @NotEmpty
+    @CPF
     private String cpf;
+
+    @Column(name = "data_nascimento")
+    @NotNull
     private LocalDate dataNascimento;
 
     public String getNome() {

@@ -1,18 +1,50 @@
 package br.pro.fagnerlima.desafiodespesas.domain.model.lancamento.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import br.pro.fagnerlima.desafiodespesas.domain.model.conta.entity.Conta;
 import br.pro.fagnerlima.desafiodespesas.domain.model.lancamento.enumeration.TipoLancamento;
 
-public class Lancamento {
+@Entity
+@Table(name = "lancamento")
+public class Lancamento implements Serializable {
 
+    private static final long serialVersionUID = 8498598444229033093L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Enumerated(EnumType.STRING)
+    @NotNull
     private TipoLancamento tipo;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_conta", referencedColumnName = "id_usuario")
+    @NotNull
     private Conta conta;
+
+    @NotNull
     private BigDecimal valor;
+
     private String descricao;
+
+    @Column(name = "data_criacao", updatable = false)
     private LocalDate dataCriacao;
 
     public Long getId() {

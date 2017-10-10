@@ -1,15 +1,41 @@
 package br.pro.fagnerlima.desafiodespesas.domain.model.conta.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import br.pro.fagnerlima.desafiodespesas.domain.model.usuario.entity.Usuario;
 
-public class Conta {
+@Entity
+@Table(name = "conta")
+public class Conta implements Serializable {
 
+    private static final long serialVersionUID = -5964028713806821385L;
+
+    @Id
+    @GeneratedValue(generator = "fk_conta_usuario")
+    @GenericGenerator(name = "fk_conta_usuario", strategy = "foreign",
+        parameters = @Parameter(name = "property", value = "usuario"))
+    @Column(name = "id_usuario")
     private Usuario usuario;
+
+    @NotNull
     private BigDecimal saldo;
+
+    @NotNull
     private boolean ativo;
+
+    @Column(name = "data_atualizacao")
     private LocalDate dataAtualizacao;
 
     public Usuario getUsuario() {
