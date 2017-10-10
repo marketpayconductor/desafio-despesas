@@ -6,8 +6,8 @@ CREATE TABLE usuario (
     email VARCHAR(100) NOT NULL,
     senha VARCHAR(150) NOT NULL,
     ativo BOOLEAN NOT NULL DEFAULT TRUE,
-    data_criacao DATETIME DEFAULT NOW(),
-    data_atualizacao DATETIME DEFAULT NOW(),
+    data_criacao DATETIME NOT NULL DEFAULT NOW(),
+    data_atualizacao DATETIME NOT NULL DEFAULT NOW(),
     CONSTRAINT pk_usuario PRIMARY KEY(id),
     CONSTRAINT uk_usuario_email UNIQUE KEY(email)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
