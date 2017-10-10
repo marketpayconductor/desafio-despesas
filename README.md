@@ -32,10 +32,9 @@ $ mvn spring-boot:run
 #### Modelo Entidade Relacionamento (MER)
 ![MER](https://i.imgur.com/rK6wKcK.jpg)
 
-#### Rescuros
+#### Recursos
 ![Recursos](https://i.imgur.com/OYYy7QP.jpg)
 
 
 ### Possíveis Melhorias
-- [ ] Cobertura de testes (JUnit)
-- [ ] ModelMapper
+- [ ] ModelMapper para evitar exposição das entidades
