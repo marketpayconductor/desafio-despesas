@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DesafioDespesasApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DesafioDespesasApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DesafioDespesasApplication.class, args);
+    }
 }
