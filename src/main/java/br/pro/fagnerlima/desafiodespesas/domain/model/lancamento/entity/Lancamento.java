@@ -27,7 +27,7 @@ public class Lancamento implements Serializable {
     private static final long serialVersionUID = 8498598444229033093L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)

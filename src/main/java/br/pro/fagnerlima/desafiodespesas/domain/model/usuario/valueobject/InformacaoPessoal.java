@@ -4,14 +4,12 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 
-@Embeddable
 public class InformacaoPessoal implements Serializable {
 
     private static final long serialVersionUID = -1448302915708620696L;

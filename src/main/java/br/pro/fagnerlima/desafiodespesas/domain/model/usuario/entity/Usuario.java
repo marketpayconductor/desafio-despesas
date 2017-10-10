@@ -3,6 +3,7 @@ package br.pro.fagnerlima.desafiodespesas.domain.model.usuario.entity;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -28,7 +29,7 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = 1624473756642837504L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
@@ -43,7 +44,7 @@ public class Usuario implements Serializable {
     @Embedded
     private InformacaoPessoal informacaoPessoal;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Conta conta;
 
