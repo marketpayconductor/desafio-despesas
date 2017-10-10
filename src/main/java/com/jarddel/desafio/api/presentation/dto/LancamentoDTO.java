@@ -8,6 +8,16 @@ final public class LancamentoDTO {
     private Long idContaOrigem;
     private Long idContaDestino;
 
+    public LancamentoDTO(BigDecimal valor, Long idContaOrigem, Long idContaDestino) {
+        this.valor = valor;
+        this.idContaOrigem = idContaOrigem;
+        this.idContaDestino = idContaDestino;
+    }
+
+    public LancamentoDTO(BigDecimal valor) {
+        this.valor = valor;
+    }
+
     public BigDecimal getValor() {
         return valor;
     }
