@@ -12,6 +12,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -33,7 +34,7 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
             HttpHeaders headers, HttpStatus status, WebRequest request) {
         String errorMessage = messageSource.getMessage("mensagem.invalida", null, LocaleContextHolder.getLocale());
         List<String> errors = Arrays.asList(errorMessage);
-        ResponseTO<Object> responseTO = new ResponseTO<Object>(errors);
+        ResponseTO<Object> responseTO = new ResponseTO<>(errors);
 
         return handleExceptionInternal(exception, responseTO, headers, status, request);
     }
@@ -42,7 +43,7 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException exception,
             HttpHeaders headers, HttpStatus status, WebRequest request) {
         List<String> errors = createErrorsList(exception.getBindingResult());
-        ResponseTO<Object> responseTO = new ResponseTO<Object>(errors);
+        ResponseTO<Object> responseTO = new ResponseTO<>(errors);
 
         return handleExceptionInternal(exception, responseTO, headers, status, request);
     }
@@ -51,9 +52,18 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
     public ResponseEntity<Object> handleEmptyResultDataAccessException(EmptyResultDataAccessException exception,
             WebRequest request) {
         List<String> errors = Arrays.asList(exception.getMessage());
-        ResponseTO<Object> responseTO = new ResponseTO<Object>(errors);
+        ResponseTO<Object> responseTO = new ResponseTO<>(errors);
 
         return handleExceptionInternal(exception, responseTO, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    }
+
+    @ExceptionHandler({ AccessDeniedException.class })
+    public ResponseEntity<Object> handleAccessDeniedException(AccessDeniedException exception, WebRequest request) {
+        List<String> errors = Arrays
+                .asList(messageSource.getMessage("recurso.acesso-negado", null, LocaleContextHolder.getLocale()));
+        ResponseTO<Object> responseTO = new ResponseTO<>(errors);
+
+        return handleExceptionInternal(exception, responseTO, new HttpHeaders(), HttpStatus.FORBIDDEN, request);
     }
 
     private List<String> createErrorsList(BindingResult bindingResult) {
