@@ -2,7 +2,7 @@ package br.pro.fagnerlima.desafiodespesas.domain.model.lancamento.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -47,7 +47,7 @@ public class Lancamento implements Serializable {
     private String descricao;
 
     @Column(name = "data_criacao", updatable = false)
-    private LocalDate dataCriacao;
+    private LocalDateTime dataCriacao;
 
     public Long getId() {
         return id;
@@ -89,11 +89,11 @@ public class Lancamento implements Serializable {
         this.descricao = descricao;
     }
 
-    public LocalDate getDataCriacao() {
+    public LocalDateTime getDataCriacao() {
         return dataCriacao;
     }
 
-    public void setDataCriacao(LocalDate dataCriacao) {
+    public void setDataCriacao(LocalDateTime dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
 

@@ -1,6 +1,6 @@
 package br.pro.fagnerlima.desafiodespesas.infrastructure.persistence.hibernate.listener;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.PrePersist;
 
@@ -10,6 +10,6 @@ public class LancamentoListener {
 
     @PrePersist
     public void lancamentoPrePersist(Lancamento lancamento) {
-        lancamento.setDataCriacao(LocalDate.now());
+        lancamento.setDataCriacao(LocalDateTime.now());
     }
 }

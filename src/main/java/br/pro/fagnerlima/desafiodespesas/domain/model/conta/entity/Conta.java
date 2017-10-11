@@ -2,7 +2,7 @@ package br.pro.fagnerlima.desafiodespesas.domain.model.conta.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +48,7 @@ public class Conta implements Serializable {
     private boolean ativo;
 
     @Column(name = "data_atualizacao")
-    private LocalDate dataAtualizacao;
+    private LocalDateTime dataAtualizacao;
 
     public Long getId() {
         return id;
@@ -82,11 +82,11 @@ public class Conta implements Serializable {
         this.ativo = ativo;
     }
 
-    public LocalDate getDataAtualizacao() {
+    public LocalDateTime getDataAtualizacao() {
         return dataAtualizacao;
     }
 
-    public void setDataAtualizacao(LocalDate dataAtualizacao) {
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
     }
 

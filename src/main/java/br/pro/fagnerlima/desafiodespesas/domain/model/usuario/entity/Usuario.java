@@ -1,7 +1,7 @@
 package br.pro.fagnerlima.desafiodespesas.domain.model.usuario.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -55,10 +55,10 @@ public class Usuario implements Serializable {
     private boolean ativo;
 
     @Column(name = "data_criacao", updatable = false)
-    private LocalDate dataCriacao;
+    private LocalDateTime dataCriacao;
 
     @Column(name = "data_atualizacao")
-    private LocalDate dataAtualizacao;
+    private LocalDateTime dataAtualizacao;
 
     public Usuario() {
 
@@ -114,19 +114,19 @@ public class Usuario implements Serializable {
         this.ativo = ativo;
     }
 
-    public LocalDate getDataCriacao() {
+    public LocalDateTime getDataCriacao() {
         return dataCriacao;
     }
 
-    public void setDataCriacao(LocalDate dataCriacao) {
+    public void setDataCriacao(LocalDateTime dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
 
-    public LocalDate getDataAtualizacao() {
+    public LocalDateTime getDataAtualizacao() {
         return dataAtualizacao;
     }
 
-    public void setDataAtualizacao(LocalDate dataAtualizacao) {
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
     }
 

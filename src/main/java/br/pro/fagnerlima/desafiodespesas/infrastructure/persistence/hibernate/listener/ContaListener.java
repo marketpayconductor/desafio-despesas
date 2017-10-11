@@ -1,7 +1,7 @@
 package br.pro.fagnerlima.desafiodespesas.infrastructure.persistence.hibernate.listener;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -13,12 +13,12 @@ public class ContaListener {
     @PrePersist
     public void contaPrePersist(Conta conta) {
         conta.setSaldo(BigDecimal.ZERO);
-        conta.setDataAtualizacao(LocalDate.now());
+        conta.setDataAtualizacao(LocalDateTime.now());
         conta.setAtivo(true);
     }
 
     @PreUpdate
     public void contaPreUpdate(Conta conta) {
-        conta.setDataAtualizacao(LocalDate.now());
+        conta.setDataAtualizacao(LocalDateTime.now());
     }
 }
