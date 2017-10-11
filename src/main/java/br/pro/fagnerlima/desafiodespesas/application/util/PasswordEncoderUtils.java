@@ -1,4 +1,4 @@
-package br.pro.fagnerlima.desafiodespesas.application;
+package br.pro.fagnerlima.desafiodespesas.application.util;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

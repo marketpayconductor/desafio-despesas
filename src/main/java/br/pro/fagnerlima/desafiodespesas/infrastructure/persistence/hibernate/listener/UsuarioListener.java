@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
-import br.pro.fagnerlima.desafiodespesas.application.PasswordEncoderUtils;
+import br.pro.fagnerlima.desafiodespesas.application.util.PasswordEncoderUtils;
 import br.pro.fagnerlima.desafiodespesas.domain.model.usuario.entity.Usuario;
 
 public class UsuarioListener {
