@@ -50,8 +50,7 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
     @ExceptionHandler({ EmptyResultDataAccessException.class })
     public ResponseEntity<Object> handleEmptyResultDataAccessException(EmptyResultDataAccessException exception,
             WebRequest request) {
-        String errorMessage = messageSource.getMessage("recurso.nao-encontrado", null, LocaleContextHolder.getLocale());
-        List<String> errors = Arrays.asList(errorMessage);
+        List<String> errors = Arrays.asList(exception.getMessage());
         ResponseTO<Object> responseTO = new ResponseTO<Object>(errors);
 
         return handleExceptionInternal(exception, responseTO, new HttpHeaders(), HttpStatus.NOT_FOUND, request);

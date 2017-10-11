@@ -38,7 +38,7 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
         T entitySaved = findOne(id);
         BeanUtils.copyProperties(entity, entitySaved, "id");
 
-        return save(entitySaved);
+        return getRepository().save(entitySaved);
     }
 
     @Override

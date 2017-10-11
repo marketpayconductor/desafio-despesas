@@ -17,8 +17,6 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import br.pro.fagnerlima.desafiodespesas.domain.model.usuario.entity.Usuario;
 import br.pro.fagnerlima.desafiodespesas.infrastructure.persistence.hibernate.listener.ContaListener;
 
@@ -38,7 +36,6 @@ public class Conta implements Serializable {
 
     @OneToOne(mappedBy = "conta")
     @PrimaryKeyJoinColumn
-    @JsonIgnore
     private Usuario usuario;
 
     @NotNull
@@ -50,20 +47,20 @@ public class Conta implements Serializable {
     @Column(name = "data_atualizacao")
     private LocalDateTime dataAtualizacao;
 
+    public Conta() {
+
+    }
+
+    public Conta(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Usuario getUsuario() {
         return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public BigDecimal getSaldo() {
