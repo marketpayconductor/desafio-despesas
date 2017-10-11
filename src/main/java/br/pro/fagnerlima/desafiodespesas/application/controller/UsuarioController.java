@@ -95,10 +95,27 @@ public class UsuarioController {
         return ResponseEntity.ok(responseTO);
     }
 
+    @PutMapping
+    public ResponseEntity<ResponseTO<UsuarioTO>> updateMe(@Valid @RequestBody CadastroUsuarioTO cadastroUsuarioTO) {
+        Usuario usuario = (new CadastroUsuarioAssembler()).getEntity(cadastroUsuarioTO);
+        usuario = usuarioService.update(userDetailsService.getUsuario().getId(), usuario);
+
+        UsuarioTO usuarioTO = (new UsuarioAssembler()).getData(usuario);
+        ResponseTO<UsuarioTO> responseTO = new ResponseTO<>(usuarioTO);
+
+        return ResponseEntity.ok(responseTO);
+    }
+
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         usuarioService.delete(id);
+    }
+
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteMe() {
+        usuarioService.delete(userDetailsService.getUsuario().getId());
     }
 }
