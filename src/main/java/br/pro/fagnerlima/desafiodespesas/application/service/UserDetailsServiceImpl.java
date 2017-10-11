@@ -8,6 +8,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,10 +33,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return new UserAuth(usuario, getPermissoes(usuario));
     }
 
+    public Usuario getUsuario() {
+        UserAuth userAuth = (UserAuth)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return userAuth.getUsuario();
+    }
+
     private Collection<? extends GrantedAuthority> getPermissoes(Usuario usuario) {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-        usuario.getPermissoes()
-                .forEach(p -> authorities.add(new SimpleGrantedAuthority(p.getDescricao().toUpperCase())));
+        usuario.getPermissoes().forEach(
+                permissao -> authorities.add(new SimpleGrantedAuthority(permissao.getDescricao().toUpperCase())));
 
         return authorities;
     }
