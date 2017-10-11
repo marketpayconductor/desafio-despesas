@@ -106,6 +106,13 @@ public class UsuarioController {
         return ResponseEntity.ok(responseTO);
     }
 
+    @PutMapping("/{id}/ativo")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateAtivo(@PathVariable Long id) {
+        usuarioService.updateAtivo(id);
+    } 
+
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -26,6 +26,14 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
     }
 
     @Override
+    public void updateAtivo(Long id) {
+        Usuario usuario = findOne(id);
+        usuario.changeAtivo();
+
+        usuarioRepository.save(usuario);
+    }
+
+    @Override
     protected BaseRepository<Usuario, Long> getRepository() {
         return usuarioRepository;
     }

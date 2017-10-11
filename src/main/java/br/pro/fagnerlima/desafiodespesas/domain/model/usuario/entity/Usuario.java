@@ -125,6 +125,10 @@ public class Usuario implements Serializable {
         this.ativo = ativo;
     }
 
+    public void changeAtivo() {
+        this.ativo = !this.ativo;
+    }
+
     public List<Permissao> getPermissoes() {
         return permissoes;
     }
