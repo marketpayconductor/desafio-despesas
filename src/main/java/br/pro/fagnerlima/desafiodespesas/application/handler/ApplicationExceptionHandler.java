@@ -66,6 +66,16 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
         return handleExceptionInternal(exception, responseTO, new HttpHeaders(), HttpStatus.FORBIDDEN, request);
     }
 
+    @ExceptionHandler({ Exception.class })
+    public ResponseEntity<Object> handleGenericException(Exception exception, WebRequest request) {
+        List<String> errors = Arrays
+                .asList(messageSource.getMessage("mensagem.erro-interno", null, LocaleContextHolder.getLocale()));
+        ResponseTO<Object> responseTO = new ResponseTO<>(errors);
+
+        return handleExceptionInternal(exception, responseTO, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR,
+                request);
+    }
+
     private List<String> createErrorsList(BindingResult bindingResult) {
         List<String> errors = new ArrayList<>();
 
