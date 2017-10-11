@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.pro.fagnerlima.desafiodespesas.application.service.UserDetailsServiceImpl;
 import br.pro.fagnerlima.desafiodespesas.domain.model.usuario.entity.Usuario;
 import br.pro.fagnerlima.desafiodespesas.domain.service.UsuarioService;
 import br.pro.fagnerlima.desafiodespesas.presentation.datatransferobject.CadastroUsuarioTO;
@@ -32,7 +34,11 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
+
     @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<ResponseTO<Page<UsuarioTO>>> findAll(Pageable pageable) {
         Page<Usuario> usuarios = usuarioService.findAll(pageable);
 
@@ -46,7 +52,17 @@ public class UsuarioController {
         return ResponseEntity.ok(responseDto);
     }
 
+    @GetMapping("/me")
+    public ResponseEntity<ResponseTO<UsuarioTO>> getMe() {
+        Usuario usuario = userDetailsService.getUsuario();
+        UsuarioTO usuarioTO = (new UsuarioAssembler()).getData(usuario);
+        ResponseTO<UsuarioTO> responseDto = new ResponseTO<>(usuarioTO);
+
+        return ResponseEntity.ok(responseDto);
+    }
+
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<ResponseTO<UsuarioTO>> findOne(@PathVariable Long id) {
         Usuario usuario = usuarioService.findOne(id);
         UsuarioTO usuarioTO = (new UsuarioAssembler()).getData(usuario);
@@ -67,6 +83,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<ResponseTO<UsuarioTO>> update(@PathVariable Long id, @Valid @RequestBody CadastroUsuarioTO cadastroUsuarioTO) {
         Usuario usuario = (new CadastroUsuarioAssembler()).getEntity(cadastroUsuarioTO);
         usuario = usuarioService.update(id, usuario);
@@ -78,6 +95,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         usuarioService.delete(id);
