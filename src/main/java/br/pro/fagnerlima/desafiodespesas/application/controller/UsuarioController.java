@@ -84,7 +84,8 @@ public class UsuarioController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public ResponseEntity<ResponseTO<UsuarioTO>> update(@PathVariable Long id, @Valid @RequestBody CadastroUsuarioTO cadastroUsuarioTO) {
+    public ResponseEntity<ResponseTO<UsuarioTO>> update(@PathVariable Long id,
+            @Valid @RequestBody CadastroUsuarioTO cadastroUsuarioTO) {
         Usuario usuario = (new CadastroUsuarioAssembler()).getEntity(cadastroUsuarioTO);
         usuario = usuarioService.update(id, usuario);
 

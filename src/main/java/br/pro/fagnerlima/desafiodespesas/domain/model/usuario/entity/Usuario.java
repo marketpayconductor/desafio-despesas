@@ -74,10 +74,11 @@ public class Usuario implements Serializable {
 
     }
 
-    public Usuario(String email, String senha, InformacaoPessoal informacaoPessoal) {
+    public Usuario(String email, String senha, InformacaoPessoal informacaoPessoal, boolean ativo) {
         this.email = email;
         this.senha = senha;
         this.informacaoPessoal = informacaoPessoal;
+        this.ativo = ativo;
     }
 
     public Long getId() {

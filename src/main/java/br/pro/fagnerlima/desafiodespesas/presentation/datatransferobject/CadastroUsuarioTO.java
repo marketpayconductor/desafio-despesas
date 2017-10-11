@@ -26,6 +26,8 @@ public final class CadastroUsuarioTO implements Serializable {
     @Valid
     private InformacaoPessoal informacaoPessoal;
 
+    private boolean ativo = true;
+
     public CadastroUsuarioTO() {
 
     }
@@ -48,10 +50,15 @@ public final class CadastroUsuarioTO implements Serializable {
         return informacaoPessoal;
     }
 
+    public boolean isAtivo() {
+        return ativo;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
+        result = prime * result + (ativo ? 1231 : 1237);
         result = prime * result + ((email == null) ? 0 : email.hashCode());
         result = prime * result + ((informacaoPessoal == null) ? 0 : informacaoPessoal.hashCode());
         result = prime * result + ((senha == null) ? 0 : senha.hashCode());
@@ -67,6 +74,8 @@ public final class CadastroUsuarioTO implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         CadastroUsuarioTO other = (CadastroUsuarioTO) obj;
+        if (ativo != other.ativo)
+            return false;
         if (email == null) {
             if (other.email != null)
                 return false;
@@ -87,7 +96,7 @@ public final class CadastroUsuarioTO implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("CadastroUsuarioTO [email=%s, senha=%s, informacaoPessoal=%s]", email, senha,
-                informacaoPessoal);
+        return String.format("CadastroUsuarioTO [email=%s, informacaoPessoal=%s, ativo=%s]", email, informacaoPessoal,
+                ativo);
     }
 }

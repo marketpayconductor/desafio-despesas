@@ -7,6 +7,6 @@ public final class CadastroUsuarioAssembler {
 
     public Usuario getEntity(CadastroUsuarioTO cadastroUsuarioTO) {
         return new Usuario(cadastroUsuarioTO.getEmail(), cadastroUsuarioTO.getSenha(),
-                cadastroUsuarioTO.getInformacaoPessoal());
+                cadastroUsuarioTO.getInformacaoPessoal(), cadastroUsuarioTO.isAtivo());
     }
 }
