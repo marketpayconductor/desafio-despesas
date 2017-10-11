@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -36,7 +35,7 @@ public class Lancamento implements Serializable {
     @NotNull
     private TipoLancamento tipo;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "id_conta", referencedColumnName = "id_usuario")
     @NotNull
     private Conta conta;

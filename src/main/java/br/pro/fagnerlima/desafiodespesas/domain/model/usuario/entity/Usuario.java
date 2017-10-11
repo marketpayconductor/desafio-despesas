@@ -52,7 +52,7 @@ public class Usuario implements Serializable {
     @Embedded
     private InformacaoPessoal informacaoPessoal;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
     @PrimaryKeyJoinColumn
     private Conta conta;
 
