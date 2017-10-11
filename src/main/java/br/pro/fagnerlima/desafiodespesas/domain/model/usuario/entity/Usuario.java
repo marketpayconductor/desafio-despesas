@@ -60,12 +60,18 @@ public class Usuario implements Serializable {
     @Column(name = "data_atualizacao")
     private LocalDate dataAtualizacao;
 
-    public Long getId() {
-        return id;
+    public Usuario() {
+
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Usuario(String email, String senha, InformacaoPessoal informacaoPessoal) {
+        this.email = email;
+        this.senha = senha;
+        this.informacaoPessoal = informacaoPessoal;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getEmail() {
