@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,8 +22,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import br.pro.fagnerlima.desafiodespesas.domain.model.conta.entity.Conta;
 import br.pro.fagnerlima.desafiodespesas.domain.model.usuario.valueobject.InformacaoPessoal;
+import br.pro.fagnerlima.desafiodespesas.infrastructure.persistence.hibernate.listener.UsuarioListener;
 
 @Entity
+@EntityListeners(UsuarioListener.class)
 @Table(name = "usuario")
 public class Usuario implements Serializable {
 

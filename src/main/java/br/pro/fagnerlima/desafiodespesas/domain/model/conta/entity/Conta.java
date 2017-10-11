@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -19,8 +20,10 @@ import org.hibernate.annotations.Parameter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.pro.fagnerlima.desafiodespesas.domain.model.usuario.entity.Usuario;
+import br.pro.fagnerlima.desafiodespesas.infrastructure.persistence.hibernate.listener.ContaListener;
 
 @Entity
+@EntityListeners(ContaListener.class)
 @Table(name = "conta")
 public class Conta implements Serializable {
 
