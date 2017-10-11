@@ -14,7 +14,6 @@ public class InformacaoPessoal implements Serializable {
 
     private static final long serialVersionUID = -1448302915708620696L;
 
-    @NotEmpty
     @Size(min = 6, max = 100)
     private String nome;
 
@@ -26,28 +25,26 @@ public class InformacaoPessoal implements Serializable {
     @NotNull
     private LocalDate dataNascimento;
 
-    public String getNome() {
-        return nome;
+    public InformacaoPessoal() {
+
     }
 
-    public void setNome(String nome) {
+    public InformacaoPessoal(String nome, String cpf, LocalDate dataNascimento) {
         this.nome = nome;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public LocalDate getDataNascimento() {
         return dataNascimento;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
     }
 
     @Override
