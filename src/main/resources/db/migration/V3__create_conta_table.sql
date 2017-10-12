@@ -1,0 +1,9 @@
+CREATE TABLE conta (
+    id_usuario BIGINT NOT NULL,
+    saldo DECIMAL(10,2) NOT NULL DEFAULT 0,
+    ativo BOOLEAN NOT NULL DEFAULT TRUE,
+    data_atualizacao DATETIME NOT NULL DEFAULT NOW(),
+    CONSTRAINT pk_conta PRIMARY KEY(id_usuario),
+    CONSTRAINT fk_conta_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+        ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
