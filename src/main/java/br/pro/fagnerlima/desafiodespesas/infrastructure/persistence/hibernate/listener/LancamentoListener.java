@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 import javax.persistence.PrePersist;
 
+import br.pro.fagnerlima.desafiodespesas.domain.model.exception.ContaInativaException;
 import br.pro.fagnerlima.desafiodespesas.domain.model.lancamento.entity.Lancamento;
-import br.pro.fagnerlima.desafiodespesas.infrastructure.persistence.hibernate.listener.exception.ContaInativaException;
 
 public class LancamentoListener {
 

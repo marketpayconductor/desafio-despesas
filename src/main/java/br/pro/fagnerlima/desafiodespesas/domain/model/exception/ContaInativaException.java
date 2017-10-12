@@ -1,4 +1,4 @@
-package br.pro.fagnerlima.desafiodespesas.infrastructure.persistence.hibernate.listener.exception;
+package br.pro.fagnerlima.desafiodespesas.domain.model.exception;
 
 public class ContaInativaException extends RuntimeException {
 
