@@ -39,10 +39,10 @@ public class Conta implements Serializable {
     private Usuario usuario;
 
     @NotNull
-    private BigDecimal saldo;
+    private BigDecimal saldo = BigDecimal.ZERO;
 
     @NotNull
-    private boolean ativo;
+    private boolean ativo = true;
 
     @Column(name = "data_atualizacao")
     private LocalDateTime dataAtualizacao;
