@@ -56,9 +56,9 @@ public class UsuarioController {
     public ResponseEntity<ResponseTO<UsuarioTO>> getMe() {
         Usuario usuario = userDetailsService.getUsuario();
         UsuarioTO usuarioTO = (new UsuarioAssembler()).getData(usuario);
-        ResponseTO<UsuarioTO> responseDto = new ResponseTO<>(usuarioTO);
+        ResponseTO<UsuarioTO> responseTO = new ResponseTO<>(usuarioTO);
 
-        return ResponseEntity.ok(responseDto);
+        return ResponseEntity.ok(responseTO);
     }
 
     @GetMapping("/{id}")
@@ -66,9 +66,9 @@ public class UsuarioController {
     public ResponseEntity<ResponseTO<UsuarioTO>> findOne(@PathVariable Long id) {
         Usuario usuario = usuarioService.findOne(id);
         UsuarioTO usuarioTO = (new UsuarioAssembler()).getData(usuario);
-        ResponseTO<UsuarioTO> responseDto = new ResponseTO<>(usuarioTO);
+        ResponseTO<UsuarioTO> responseTO = new ResponseTO<>(usuarioTO);
 
-        return ResponseEntity.ok(responseDto);
+        return ResponseEntity.ok(responseTO);
     }
 
     @PostMapping
