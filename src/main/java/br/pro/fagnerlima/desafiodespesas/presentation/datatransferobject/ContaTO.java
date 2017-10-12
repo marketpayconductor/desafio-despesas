@@ -17,7 +17,6 @@ public final class ContaTO implements Serializable {
     }
 
     public ContaTO(Long id, String usuario, BigDecimal saldo, boolean ativo) {
-        super();
         this.id = id;
         this.usuario = usuario;
         this.saldo = saldo;
