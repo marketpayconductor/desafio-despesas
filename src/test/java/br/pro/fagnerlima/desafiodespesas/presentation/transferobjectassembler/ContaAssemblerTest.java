@@ -13,6 +13,7 @@ import br.pro.fagnerlima.desafiodespesas.domain.model.conta.entity.Conta;
 import br.pro.fagnerlima.desafiodespesas.domain.model.usuario.entity.Usuario;
 import br.pro.fagnerlima.desafiodespesas.domain.model.usuario.valueobject.InformacaoPessoal;
 import br.pro.fagnerlima.desafiodespesas.presentation.datatransferobject.ContaTO;
+import br.pro.fagnerlima.desafiodespesas.presentation.datatransferobject.UsuarioTO;
 
 @RunWith(SpringRunner.class)
 public class ContaAssemblerTest {
@@ -25,5 +26,14 @@ public class ContaAssemblerTest {
         ContaTO contaTO = (new ContaAssembler()).getData(conta);
 
         assertThat(contaTO, instanceOf(ContaTO.class));
+        assertEquals(contaTO.getId(), conta.getId());
+        assertEquals(contaTO.getUsuario(), conta.getUsuario().getInformacaoPessoal().getNome());
+        assertEquals(contaTO.getSaldo(), conta.getSaldo());
+        assertEquals(contaTO.isAtivo(), conta.isAtivo());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void lancarNullPointerException() {
+        assertThat((new ContaAssembler()).getData(null), instanceOf(UsuarioTO.class));
     }
 }
