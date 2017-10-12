@@ -52,15 +52,6 @@ public class UsuarioController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @GetMapping("/me")
-    public ResponseEntity<ResponseTO<UsuarioTO>> getMe() {
-        Usuario usuario = userDetailsService.getUsuario();
-        UsuarioTO usuarioTO = (new UsuarioAssembler()).getData(usuario);
-        ResponseTO<UsuarioTO> responseTO = new ResponseTO<>(usuarioTO);
-
-        return ResponseEntity.ok(responseTO);
-    }
-
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<ResponseTO<UsuarioTO>> findOne(@PathVariable Long id) {
