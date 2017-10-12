@@ -10,18 +10,18 @@ public final class ContaTO implements Serializable {
     private Long id;
     private String usuario;
     private BigDecimal saldo;
-    private boolean status;
+    private boolean ativo;
 
     public ContaTO() {
 
     }
 
-    public ContaTO(Long id, String usuario, BigDecimal saldo, boolean status) {
+    public ContaTO(Long id, String usuario, BigDecimal saldo, boolean ativo) {
         super();
         this.id = id;
         this.usuario = usuario;
         this.saldo = saldo;
-        this.status = status;
+        this.ativo = ativo;
     }
 
     public Long getId() {
@@ -36,8 +36,8 @@ public final class ContaTO implements Serializable {
         return saldo;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isAtivo() {
+        return ativo;
     }
 
     @Override
@@ -67,6 +67,6 @@ public final class ContaTO implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("ContaTO [id=%s, usuario=%s, saldo=%s, status=%s]", id, usuario, saldo, status);
+        return String.format("ContaTO [id=%s, usuario=%s, saldo=%s, ativo=%s]", id, usuario, saldo, ativo);
     }
 }
