@@ -16,18 +16,18 @@ public class CadastroLancamentoAssemblerTest {
 
     @Test
     public void obterLancamento() {
-        CadastroLancamentoTO cadastroLancamentoTO = new CadastroLancamentoTO(TipoLancamento.RECEITA, "Renda extra",
-                BigDecimal.valueOf(500));
-        Lancamento lancamento = (new CadastroLancamentoAssembler()).getEntity(cadastroLancamentoTO, new Conta());
+        CadastroLancamentoTO cadastroLancamentoTO = new CadastroLancamentoTO("Renda extra", BigDecimal.valueOf(500));
+        Lancamento lancamento = (new CadastroLancamentoAssembler()).getEntity(cadastroLancamentoTO, new Conta(),
+                TipoLancamento.RECEITA);
 
         assertThat(lancamento, instanceOf(Lancamento.class));
-        assertEquals(lancamento.getTipo(), cadastroLancamentoTO.getTipo());
+        assertEquals(lancamento.getTipo(), TipoLancamento.RECEITA);
         assertEquals(lancamento.getDescricao(), cadastroLancamentoTO.getDescricao());
         assertEquals(lancamento.getValor(), cadastroLancamentoTO.getValor());
     }
 
     @Test(expected = NullPointerException.class)
     public void lancarNullPointerException() {
-        assertThat((new CadastroLancamentoAssembler()).getEntity(null, null), instanceOf(Lancamento.class));
+        assertThat((new CadastroLancamentoAssembler()).getEntity(null, null, null), instanceOf(Lancamento.class));
     }
 }

@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import br.pro.fagnerlima.desafiodespesas.domain.model.exception.SaldoInsuficienteException;
 import br.pro.fagnerlima.desafiodespesas.domain.model.usuario.entity.Usuario;
 import br.pro.fagnerlima.desafiodespesas.infrastructure.persistence.hibernate.listener.ContaListener;
 
@@ -67,8 +68,20 @@ public class Conta implements Serializable {
         return saldo;
     }
 
-    public void setSaldo(BigDecimal saldo) {
-        this.saldo = saldo;
+    public BigDecimal creditar(BigDecimal valor) {
+        saldo = saldo.add(valor);
+
+        return saldo;
+    }
+
+    public BigDecimal debitar(BigDecimal valor) throws SaldoInsuficienteException {
+        if (0 > saldo.compareTo(valor)) {
+            throw new SaldoInsuficienteException();
+        }
+
+        saldo = saldo.subtract(valor);
+
+        return saldo;
     }
 
     public boolean isAtivo() {

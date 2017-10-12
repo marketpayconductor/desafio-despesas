@@ -6,33 +6,23 @@ import java.math.BigDecimal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import br.pro.fagnerlima.desafiodespesas.domain.model.lancamento.enumeration.TipoLancamento;
-
-public final class CadastroLancamentoTO implements Serializable {
+public class CadastroLancamentoTO implements Serializable {
 
     private static final long serialVersionUID = 866990244772381243L;
 
-    @NotNull
-    private TipoLancamento tipo;
-
     @Size(max = 50)
-    private String descricao;
+    protected String descricao;
 
     @NotNull
-    private BigDecimal valor;
+    protected BigDecimal valor;
 
     public CadastroLancamentoTO() {
 
     }
 
-    public CadastroLancamentoTO(TipoLancamento tipo, String descricao, BigDecimal valor) {
-        this.tipo = tipo;
+    public CadastroLancamentoTO(String descricao, BigDecimal valor) {
         this.descricao = descricao;
         this.valor = valor;
-    }
-
-    public TipoLancamento getTipo() {
-        return tipo;
     }
 
     public String getDescricao() {
@@ -48,7 +38,6 @@ public final class CadastroLancamentoTO implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-        result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
         result = prime * result + ((valor == null) ? 0 : valor.hashCode());
         return result;
     }
@@ -67,8 +56,6 @@ public final class CadastroLancamentoTO implements Serializable {
                 return false;
         } else if (!descricao.equals(other.descricao))
             return false;
-        if (tipo != other.tipo)
-            return false;
         if (valor == null) {
             if (other.valor != null)
                 return false;
@@ -79,6 +66,6 @@ public final class CadastroLancamentoTO implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("CadastroLancamentoTO [tipo=%s, descricao=%s, valor=%s]", tipo, descricao, valor);
+        return String.format("CadastroLancamentoTO [descricao=%s, valor=%s]", descricao, valor);
     }
 }

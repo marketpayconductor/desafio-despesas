@@ -19,9 +19,10 @@ import javax.validation.constraints.NotNull;
 
 import br.pro.fagnerlima.desafiodespesas.domain.model.conta.entity.Conta;
 import br.pro.fagnerlima.desafiodespesas.domain.model.lancamento.enumeration.TipoLancamento;
+import br.pro.fagnerlima.desafiodespesas.infrastructure.persistence.hibernate.listener.LancamentoListener;
 
 @Entity
-@EntityListeners(Lancamento.class)
+@EntityListeners(LancamentoListener.class)
 @Table(name = "lancamento")
 public class Lancamento implements Serializable {
 
@@ -47,6 +48,21 @@ public class Lancamento implements Serializable {
 
     @Column(name = "data_criacao", updatable = false)
     private LocalDateTime dataCriacao;
+
+    public Lancamento() {
+
+    }
+
+    public Lancamento(TipoLancamento tipo, Conta conta, BigDecimal valor) {
+        this.tipo = tipo;
+        this.conta = conta;
+        this.valor = valor;
+    }
+
+    public Lancamento(TipoLancamento tipo, Conta conta, BigDecimal valor, String descricao) {
+        this(tipo, conta, valor);
+        this.descricao = descricao;
+    }
 
     public Long getId() {
         return id;

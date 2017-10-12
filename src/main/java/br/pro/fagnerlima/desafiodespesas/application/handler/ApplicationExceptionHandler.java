@@ -66,6 +66,15 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
         return handleExceptionInternal(exception, responseTO, new HttpHeaders(), HttpStatus.FORBIDDEN, request);
     }
 
+    @ExceptionHandler({ RuntimeException.class })
+    public ResponseEntity<Object> handleRuntimeException(RuntimeException exception, WebRequest request) {
+        List<String> errors = Arrays.asList(exception.getMessage());
+        ResponseTO<Object> responseTO = new ResponseTO<>(errors);
+
+        return handleExceptionInternal(exception, responseTO, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR,
+                request);
+    }
+
     @ExceptionHandler({ Exception.class })
     public ResponseEntity<Object> handleGenericException(Exception exception, WebRequest request) {
         List<String> errors = Arrays
