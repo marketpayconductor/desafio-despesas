@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.pro.fagnerlima.desafiodespesas.application.service.UserDetailsServiceImpl;
 import br.pro.fagnerlima.desafiodespesas.domain.model.usuario.entity.Usuario;
 import br.pro.fagnerlima.desafiodespesas.domain.service.UsuarioService;
+import br.pro.fagnerlima.desafiodespesas.infrastructure.service.AppUserDetailsService;
 import br.pro.fagnerlima.desafiodespesas.presentation.datatransferobject.CadastroUsuarioTO;
 import br.pro.fagnerlima.desafiodespesas.presentation.datatransferobject.ResponseTO;
 import br.pro.fagnerlima.desafiodespesas.presentation.datatransferobject.UsuarioTO;
@@ -35,7 +35,7 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    private AppUserDetailsService userDetailsService;
 
     @GetMapping
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")

@@ -10,16 +10,16 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import br.pro.fagnerlima.desafiodespesas.domain.model.usuario.entity.Usuario;
 import br.pro.fagnerlima.desafiodespesas.infrastructure.persistence.hibernate.repository.UsuarioRepository;
 import br.pro.fagnerlima.desafiodespesas.infrastructure.security.UserAuth;
+import br.pro.fagnerlima.desafiodespesas.infrastructure.service.AppUserDetailsService;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements AppUserDetailsService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;

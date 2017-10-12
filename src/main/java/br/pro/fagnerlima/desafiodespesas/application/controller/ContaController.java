@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.pro.fagnerlima.desafiodespesas.application.service.UserDetailsServiceImpl;
 import br.pro.fagnerlima.desafiodespesas.domain.model.conta.entity.Conta;
 import br.pro.fagnerlima.desafiodespesas.domain.service.ContaService;
+import br.pro.fagnerlima.desafiodespesas.infrastructure.service.AppUserDetailsService;
 import br.pro.fagnerlima.desafiodespesas.presentation.datatransferobject.ContaTO;
 import br.pro.fagnerlima.desafiodespesas.presentation.datatransferobject.ResponseTO;
 import br.pro.fagnerlima.desafiodespesas.presentation.transferobjectassembler.ContaAssembler;
@@ -30,7 +30,7 @@ public class ContaController {
     private ContaService contaService;
 
     @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    private AppUserDetailsService userDetailsService;
 
     @GetMapping
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")

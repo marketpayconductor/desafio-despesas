@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.pro.fagnerlima.desafiodespesas.application.service.UserDetailsServiceImpl;
 import br.pro.fagnerlima.desafiodespesas.domain.model.lancamento.entity.Lancamento;
 import br.pro.fagnerlima.desafiodespesas.domain.model.lancamento.enumeration.TipoLancamento;
 import br.pro.fagnerlima.desafiodespesas.domain.service.LancamentoService;
+import br.pro.fagnerlima.desafiodespesas.infrastructure.service.AppUserDetailsService;
 import br.pro.fagnerlima.desafiodespesas.presentation.datatransferobject.CadastroLancamentoTO;
 import br.pro.fagnerlima.desafiodespesas.presentation.datatransferobject.CadastroTransferenciaTO;
 import br.pro.fagnerlima.desafiodespesas.presentation.datatransferobject.LancamentoTO;
@@ -31,7 +31,7 @@ public class LancamentoController {
     private LancamentoService lancamentoService;
 
     @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    private AppUserDetailsService userDetailsService;
 
     @GetMapping
     public ResponseEntity<ResponseTO<Page<LancamentoTO>>> getHistorico(Pageable pageable) {
