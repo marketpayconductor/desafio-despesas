@@ -19,12 +19,13 @@ public class UsuarioAssemblerTest {
     @Test
     public void obterUsuarioTO() {
         Usuario usuario = new Usuario("test@email.com", "p@ssw0rd",
-                new InformacaoPessoal("Test", "12345678901", LocalDate.parse("1990-01-01")));
+                new InformacaoPessoal("Test", "12345678901", LocalDate.parse("1990-01-01")), true);
         UsuarioTO usuarioTO = (new UsuarioAssembler()).getData(usuario);
 
         assertThat(usuarioTO, instanceOf(UsuarioTO.class));
         assertEquals(usuarioTO.getEmail(), usuario.getEmail());
         assertEquals(usuarioTO.getInformacaoPessoal(), usuario.getInformacaoPessoal());
+        assertEquals(usuarioTO.isAtivo(), usuario.isAtivo());
     }
 
     @Test(expected = NullPointerException.class)
