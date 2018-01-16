@@ -39,7 +39,7 @@ Se você for aprovado nesta etapa, será convidado para uma entrevista final com
     ```
 
 ### Instruções
-      1. Faça o fork do desafio e crie uma branch 'desafio_despesas_nome_candidato';
+      1. Faça o fork do desafio e crie uma branch 'desafio_contatos_nome_candidato';
       2. Desenvolva. Você terá 2 (dois) dias a partir da data do envio do desafio; 
       3. Após concluir seu trabalho faça um push; 
       4. Crie um arquivo de texto com a nomenclatura README.MD com a explicação de como devemos executar o 
